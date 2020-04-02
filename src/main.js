@@ -1,12 +1,11 @@
-//Функция для рендеринга
+'use strict';
 const render = (container, template, place) => {
   container.insertAdjacentHTML(place, template);
 };
 
-//Меню
 const createSiteMenuTemplate = () => {
   return (
-  `<section class="control__btn-wrap">
+    `<section class="control__btn-wrap">
     <input type="radio" name="control" id="control__new-task" class="control__input visually-hidden" />
     <label for="control__new-task" class="control__label control__label--new-task">+ ADD NEW TASK</label>
     <input type="radio" name="control" id="control__task" class="control__input visually-hidden" checked />
@@ -16,10 +15,10 @@ const createSiteMenuTemplate = () => {
   </section>`
   );
 };
-//Фильтры
+
 const createFilterTemplate = () => {
   return (
-  `<section class="main__filter filter container">
+    `<section class="main__filter filter container">
     <input type="radio" id="filter__all" class="filter__input visually-hidden" name="filter" checked />
     <label for="filter__all" class="filter__label"> All <span class="filter__all-count">13</span></label>
     <input type="radio" id="filter__overdue" class="filter__input visually-hidden" name="filter" disabled />
@@ -35,10 +34,10 @@ const createFilterTemplate = () => {
   </section>`
   );
 };
-//Сортировка
+
 const createBoardTemplate = () => {
   return (
-  `<section class="board container">
+    `<section class="board container">
     <div class="board__filter-list">
       <a href="#" class="board__filter">SORT BY DEFAULT</a>
       <a href="#" class="board__filter">SORT BY DATE up</a>
@@ -48,10 +47,10 @@ const createBoardTemplate = () => {
   </section>`
   );
 };
-//Карточка задачи
+
 const createTaskTemplate = () => {
   return (
-  `<article class="card card--black">
+    `<article class="card card--black">
     <div class="card__form">
       <div class="card__inner">
         <div class="card__control">
@@ -96,7 +95,7 @@ const createTaskTemplate = () => {
 
 const createTaskEditTemplate = () => {
   return (
-  `<article class="card card--edit card--yellow card--repeat">
+    `<article class="card card--edit card--yellow card--repeat">
     <form class="card__form" method="get">
       <div class="card__inner">
         <div class="card__color-bar">
@@ -189,23 +188,19 @@ const createTaskEditTemplate = () => {
   );
 };
 
-//Кнопка «Load more».
 const createLoadMoreButtonTemplate = () => {
   return (
     `<button class="load-more" type="button">load more</button>`
   );
 };
 
-//Ключевые элементы страницы
 const siteMainElement = document.querySelector(`.main`);
 const siteHeaderElement = siteMainElement.querySelector(`.main__control`);
 
-//Рендерим разметку в сохраненные элементы.
 render(siteHeaderElement, createSiteMenuTemplate(), `beforeend`);
 render(siteMainElement, createFilterTemplate(), `beforeend`);
 render(siteMainElement, createBoardTemplate(), `beforeend`);
 
-//Рендерим фильтры, сортировку, карточки, кнопку
 const boardElement = siteMainElement.querySelector(`.board`);
 const taskListElement = siteMainElement.querySelector(`.board__tasks`);
 
